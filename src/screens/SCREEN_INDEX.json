@@ -1,0 +1,133 @@
+[
+  {
+    "screenId": "15c7855cdb8e49b1ab80e70a8e2001b4",
+    "title": "Gameplay - PulseRelay Canary Fresh",
+    "componentName": "GameplayPulserelayCanaryFresh",
+    "file": "src/screens/GameplayPulserelayCanaryFresh.tsx",
+    "buttons": 8,
+    "inputs": 0,
+    "links": 7,
+    "actions": [
+      {
+        "id": "timer-1",
+        "kind": "button",
+        "label": "Timer",
+        "index": 0
+      },
+      {
+        "id": "favorite-2",
+        "kind": "button",
+        "label": "Favorite",
+        "index": 1
+      },
+      {
+        "id": "rebase-edit-3",
+        "kind": "button",
+        "label": "Rebase Edit",
+        "index": 2
+      },
+      {
+        "id": "initialize-pulse-4",
+        "kind": "button",
+        "label": "INITIALIZE_PULSE",
+        "index": 3
+      },
+      {
+        "id": "pause-5",
+        "kind": "button",
+        "label": "PAUSE",
+        "index": 4
+      },
+      {
+        "id": "restart-6",
+        "kind": "button",
+        "label": "RESTART",
+        "index": 5
+      },
+      {
+        "id": "resume-feed-7",
+        "kind": "button",
+        "label": "RESUME_FEED",
+        "index": 6
+      },
+      {
+        "id": "exit-to-settings-8",
+        "kind": "button",
+        "label": "EXIT_TO_SETTINGS",
+        "index": 7
+      },
+      {
+        "id": "terminal-1",
+        "kind": "link",
+        "label": "TERMINAL",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "config-2",
+        "kind": "link",
+        "label": "CONFIG",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "data-streams-3",
+        "kind": "link",
+        "label": "DATA_STREAMS",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "diagnostics-4",
+        "kind": "link",
+        "label": "DIAGNOSTICS",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "manual-5",
+        "kind": "link",
+        "label": "MANUAL",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "logs-6",
+        "kind": "link",
+        "label": "LOGS",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "network-status-7",
+        "kind": "link",
+        "label": "NETWORK_STATUS",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "efaf5277c4034f818440cbc016f5df56",
+    "title": "Game Settings - PulseRelay Canary Fresh",
+    "componentName": "GameSettingsPulserelayCanaryFresh",
+    "file": "src/screens/GameSettingsPulserelayCanaryFresh.tsx",
+    "buttons": 2,
+    "inputs": 6,
+    "links": 0,
+    "actions": [
+      {
+        "id": "back-to-game-1",
+        "kind": "button",
+        "label": "BACK TO GAME",
+        "index": 0
+      },
+      {
+        "id": "save-configuration-2",
+        "kind": "button",
+        "label": "SAVE CONFIGURATION",
+        "index": 1
+      }
+    ]
+  }
+]

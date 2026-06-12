@@ -1,0 +1,290 @@
+[
+  {
+    "screenId": "15c7855cdb8e49b1ab80e70a8e2001b4",
+    "screenTitle": "Gameplay - PulseRelay Canary Fresh",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 180
+      },
+      {
+        "type": "link",
+        "label": "CONFIG",
+        "href": "#",
+        "line": 186
+      },
+      {
+        "type": "link",
+        "label": "DATA_STREAMS",
+        "href": "#",
+        "line": 192
+      },
+      {
+        "type": "link",
+        "label": "DIAGNOSTICS",
+        "href": "#",
+        "line": 198
+      },
+      {
+        "type": "link",
+        "label": "MANUAL",
+        "href": "#",
+        "line": 326
+      },
+      {
+        "type": "link",
+        "label": "LOGS",
+        "href": "#",
+        "line": 327
+      },
+      {
+        "type": "link",
+        "label": "NETWORK_STATUS",
+        "href": "#",
+        "line": 328
+      },
+      {
+        "type": "button",
+        "label": "timer",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "favorite",
+        "line": 163
+      },
+      {
+        "type": "button",
+        "label": "rebase_edit",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "INITIALIZE_PULSE",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 295
+      },
+      {
+        "type": "button",
+        "label": "RESTART",
+        "line": 298
+      },
+      {
+        "type": "button",
+        "label": "RESUME_FEED",
+        "line": 308
+      },
+      {
+        "type": "button",
+        "label": "EXIT_TO_SETTINGS",
+        "line": 311
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "terminal",
+        "href": "#",
+        "line": 180
+      },
+      {
+        "type": "link",
+        "label": "CONFIG",
+        "href": "#",
+        "line": 186
+      },
+      {
+        "type": "link",
+        "label": "DATA_STREAMS",
+        "href": "#",
+        "line": 192
+      },
+      {
+        "type": "link",
+        "label": "DIAGNOSTICS",
+        "href": "#",
+        "line": 198
+      },
+      {
+        "type": "link",
+        "label": "MANUAL",
+        "href": "#",
+        "line": 326
+      },
+      {
+        "type": "link",
+        "label": "LOGS",
+        "href": "#",
+        "line": 327
+      },
+      {
+        "type": "link",
+        "label": "NETWORK_STATUS",
+        "href": "#",
+        "line": 328
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "timer",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "favorite",
+        "line": 163
+      },
+      {
+        "type": "button",
+        "label": "rebase_edit",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "INITIALIZE_PULSE",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 295
+      },
+      {
+        "type": "button",
+        "label": "RESTART",
+        "line": 298
+      },
+      {
+        "type": "button",
+        "label": "RESUME_FEED",
+        "line": 308
+      },
+      {
+        "type": "button",
+        "label": "EXIT_TO_SETTINGS",
+        "line": 311
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 15,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "efaf5277c4034f818440cbc016f5df56",
+    "screenTitle": "Game Settings - PulseRelay Canary Fresh",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "BACK TO GAME",
+        "line": 279
+      },
+      {
+        "type": "button",
+        "label": "SAVE CONFIGURATION",
+        "line": 282
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 186
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 194
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 202
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 222
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 231
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 240
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "BACK TO GAME",
+        "line": 279
+      },
+      {
+        "type": "button",
+        "label": "SAVE CONFIGURATION",
+        "line": 282
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 186
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 194
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 202
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 222
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 231
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 240
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 8,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]

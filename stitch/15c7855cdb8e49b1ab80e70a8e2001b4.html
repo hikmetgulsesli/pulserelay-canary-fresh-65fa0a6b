@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gameplay - PulseRelay Canary Fresh</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#fface8",
+                        "surface": "#131318",
+                        "on-primary-fixed-variant": "#004f54",
+                        "tertiary-fixed": "#e9ddff",
+                        "on-tertiary-container": "#7318ff",
+                        "on-tertiary": "#3c0090",
+                        "surface-dim": "#131318",
+                        "on-error-container": "#ffdad6",
+                        "on-surface": "#e4e1e9",
+                        "secondary": "#fface8",
+                        "surface-tint": "#00dbe7",
+                        "tertiary-container": "#e3d4ff",
+                        "on-secondary": "#5e0053",
+                        "inverse-on-surface": "#303036",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-low": "#1b1b20",
+                        "background": "#131318",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-tertiary-fixed-variant": "#5700c9",
+                        "primary-container": "#00f2ff",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#e4e1e9",
+                        "outline-variant": "#3a494b",
+                        "on-primary-container": "#006a71",
+                        "primary-fixed": "#74f5ff",
+                        "secondary-container": "#ff24e4",
+                        "surface-container-highest": "#35343a",
+                        "surface-bright": "#39383e",
+                        "primary": "#e1fdff",
+                        "surface-container-high": "#2a292f",
+                        "on-tertiary-fixed": "#23005b",
+                        "tertiary": "#fcf5ff",
+                        "on-secondary-fixed": "#3a0033",
+                        "on-primary": "#00363a",
+                        "surface-container": "#1f1f25",
+                        "on-error": "#690005",
+                        "on-background": "#e4e1e9",
+                        "surface-variant": "#35343a",
+                        "outline": "#849495",
+                        "on-secondary-fixed-variant": "#840076",
+                        "on-secondary-container": "#520049",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#d1bcff",
+                        "inverse-primary": "#00696f",
+                        "on-primary-fixed": "#002022",
+                        "secondary-fixed": "#ffd7f0",
+                        "surface-container-lowest": "#0e0e13"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "lg": "24px",
+                        "grid-gutter": "16px",
+                        "xs": "4px",
+                        "container-margin": "24px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xl": "48px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "display-lg": ["JetBrains Mono"],
+                        "headline-md": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "code-sm": ["11px", { "lineHeight": "1.4", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0f;
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glow-cyan {
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+        }
+        .glow-cyan-intense {
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+        }
+        .glow-text-cyan {
+            text-shadow: 0 0 8px rgba(0, 242, 255, 0.5);
+        }
+        .glow-magenta {
+            box-shadow: 0 0 10px rgba(255, 0, 229, 0.3);
+        }
+        
+        /* Grid Playfield specific */
+        .playfield-cell {
+            border: 1px solid rgba(58, 73, 75, 0.3);
+            transition: all 0.2s;
+        }
+        .playfield-active-path {
+            background-color: rgba(0, 242, 255, 0.1);
+            border: 1px solid #00f2ff;
+            box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.2), 0 0 5px rgba(0, 242, 255, 0.3);
+        }
+        .playfield-dead-rail {
+            background-color: rgba(255, 0, 229, 0.1);
+            border: 1px solid #ff24e4;
+            box-shadow: inset 0 0 10px rgba(255, 0, 229, 0.2), 0 0 5px rgba(255, 0, 229, 0.3);
+        }
+        .light-packet {
+            width: 12px;
+            height: 12px;
+            background-color: #e1fdff;
+            border-radius: 50%;
+            box-shadow: 0 0 15px 5px #00f2ff;
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-md h-screen flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md font-headline-md text-headline-md tracking-tighter w-full border-b border-outline-variant shadow-[0_0_15px_rgba(0,242,255,0.15)] transition-all duration-150 ease-in-out flex justify-between items-center px-lg h-16 z-50 shrink-0">
+<div class="font-display-lg text-display-lg text-primary-container drop-shadow-[0_0_10px_rgba(0,242,255,0.5)]">
+            PULSE_RELAY_CANARY_FRESH
+        </div>
+<div class="flex items-center gap-md hidden">
+<!-- Hidden Search as per JSON -->
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary-fixed-dim hover:drop-shadow-[0_0_8px_rgba(0,219,231,0.6)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">timer</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary-fixed-dim hover:drop-shadow-[0_0_8px_rgba(0,219,231,0.6)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary-fixed-dim hover:drop-shadow-[0_0_8px_rgba(0,219,231,0.6)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">rebase_edit</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest/90 font-code-sm text-code-sm uppercase border-r border-outline-variant w-64 flex flex-col py-md z-40 shrink-0">
+<div class="px-md mb-lg">
+<div class="font-headline-md text-headline-md text-primary-container mb-xs">OPERATOR_01</div>
+<div class="text-on-surface-variant text-code-sm">SYSTEM_STATUS: ACTIVE</div>
+</div>
+<ul class="flex flex-col gap-xs flex-1">
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-primary-container bg-primary-container/10 border-l-4 border-primary-container hover:bg-surface-container-high transition-colors active:bg-primary-fixed-dim/20" href="#">
+<span class="material-symbols-outlined">terminal</span>
+                        TERMINAL
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:text-on-surface border-l-4 border-transparent hover:bg-surface-container-high transition-colors active:bg-primary-fixed-dim/20" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        CONFIG
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:text-on-surface border-l-4 border-transparent hover:bg-surface-container-high transition-colors active:bg-primary-fixed-dim/20" href="#">
+<span class="material-symbols-outlined">database</span>
+                        DATA_STREAMS
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:text-on-surface border-l-4 border-transparent hover:bg-surface-container-high transition-colors active:bg-primary-fixed-dim/20" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                        DIAGNOSTICS
+                    </a>
+</li>
+</ul>
+<div class="px-md mt-auto">
+<button class="w-full bg-primary-container text-on-primary py-sm font-code-sm text-code-sm font-bold glow-cyan hover:glow-cyan-intense transition-all active:scale-95 border border-primary-container">
+                    INITIALIZE_PULSE
+                </button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col relative bg-[#12121a] p-lg">
+<!-- HUD -->
+<div class="flex justify-between items-center mb-md p-md bg-surface-container border border-outline-variant rounded-DEFAULT shadow-[0_0_10px_rgba(0,0,0,0.5)] border-t-2 border-t-primary-container">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">SCORE_VAL</span>
+<span class="font-headline-lg text-headline-lg text-primary-container glow-text-cyan tracking-widest">001250</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">PACKET_ROUTING</span>
+<div class="flex items-center gap-sm mt-xs">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden border border-outline-variant">
+<div class="h-full bg-primary-container w-[60%] glow-cyan"></div>
+</div>
+<span class="font-code-sm text-code-sm text-primary">3/5 ACTIVE</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-md text-label-md text-on-surface-variant">SYS_INTEGRITY</span>
+<div class="flex items-center gap-xs mt-xs bg-surface-container-low px-sm py-xs border border-primary-container/30">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse glow-cyan"></span>
+<span class="font-code-sm text-code-sm text-primary-container">STABLE</span>
+</div>
+</div>
+</div>
+<!-- Playfield Wrapper -->
+<div class="flex-1 relative border border-outline-variant bg-[#0e0e13] overflow-hidden flex items-center justify-center p-md">
+<!-- The Grid Playfield -->
+<div class="grid grid-cols-12 grid-rows-8 gap-[1px] w-full h-full bg-outline-variant/20 p-[1px]">
+<!-- Generate grid cells, some active, some dead rails -->
+<!-- Row 1 -->
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-dead-rail"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<!-- Row 2 -->
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-active-path relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="light-packet"></div>
+</div>
+</div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell playfield-dead-rail"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<!-- Row 3-8 (simplified for brevity, mixing states) -->
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell playfield-active-path"></div>
+<div class="playfield-cell bg-surface"></div>
+<div class="playfield-cell bg-surface"></div>
+<!-- Filling remainder purely as background to show grid -->
+<script>
+                        for(let i=0; i<60; i++) {
+                            let cl = "playfield-cell bg-surface";
+                            if(i===14 || i===25) cl = "playfield-cell playfield-active-path";
+                            if(i===22 || i===45) cl = "playfield-cell playfield-dead-rail";
+                            document.write(`<div class="${cl}"></div>`);
+                        }
+                    </script>
+</div>
+<!-- Controls Overlay (Active Play State) -->
+<div class="absolute bottom-md right-md flex gap-md">
+<button class="bg-surface-container-high border border-outline-variant text-on-surface px-md py-sm font-code-sm flex items-center gap-xs hover:border-primary-container hover:text-primary-container transition-all">
+<span class="material-symbols-outlined text-[18px]">pause</span> PAUSE
+                    </button>
+<button class="bg-surface-container-high border border-outline-variant text-on-surface px-md py-sm font-code-sm flex items-center gap-xs hover:border-error hover:text-error transition-all">
+<span class="material-symbols-outlined text-[18px]">refresh</span> RESTART
+                    </button>
+</div>
+<!-- Pause Overlay (Hidden by default, showing it for design demonstration based on prompt) -->
+<div class="absolute inset-0 bg-[#0a0a0f]/80 backdrop-blur-sm z-20 flex flex-col items-center justify-center border border-primary-container/20 hidden" id="pauseOverlay">
+<div class="bg-surface-container p-xl border border-outline-variant shadow-[0_0_30px_rgba(0,0,0,0.8)] text-center w-96 border-t-2 border-t-primary-container">
+<h2 class="font-display-lg text-display-lg text-primary-container mb-lg glow-text-cyan tracking-tighter">GAME_PAUSED</h2>
+<div class="font-code-sm text-code-sm text-on-surface-variant mb-xl">DATA_STREAM_INTERRUPTED</div>
+<div class="flex flex-col gap-md">
+<button class="w-full bg-primary-container text-on-primary py-sm font-headline-md text-headline-md font-bold glow-cyan hover:glow-cyan-intense transition-all active:scale-95 border border-primary-container" onclick="document.getElementById('pauseOverlay').classList.add('hidden')">
+                                RESUME_FEED
+                            </button>
+<button class="w-full bg-transparent text-primary-container py-sm font-headline-md text-headline-md font-bold border border-primary-container hover:bg-primary-container/10 transition-all active:scale-95">
+                                EXIT_TO_SETTINGS
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-low font-code-sm text-code-sm w-full py-base border-t border-outline-variant flex justify-between items-center px-lg mt-auto shrink-0 z-50">
+<div class="text-on-surface-variant">
+            © 2024 PULSERELAY_SYSTEMS // CANARY_FRESH_BUILD
+        </div>
+<div class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary-container underline-offset-4 hover:underline" href="#">MANUAL</a>
+<a class="text-on-surface-variant hover:text-primary-container underline-offset-4 hover:underline" href="#">LOGS</a>
+<a class="text-on-surface-variant hover:text-primary-container underline-offset-4 hover:underline" href="#">NETWORK_STATUS</a>
+</div>
+</footer>
+<script>
+        // Simple mock interaction for demonstration
+        document.querySelectorAll('button:contains("PAUSE")').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.getElementById('pauseOverlay').classList.remove('hidden');
+            });
+        });
+        
+        // Helper to make mock querySelectorAll work with :contains if needed, but keeping it vanilla for demo
+        const pauseBtn = Array.from(document.querySelectorAll('button')).find(el => el.textContent.includes('PAUSE'));
+        if(pauseBtn) {
+            pauseBtn.addEventListener('click', () => {
+                document.getElementById('pauseOverlay').classList.remove('hidden');
+            });
+        }
+    </script>
+</body></html>

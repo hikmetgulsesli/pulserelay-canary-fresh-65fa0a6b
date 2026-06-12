@@ -1,0 +1,20 @@
+[
+  {
+    "screenId": "15c7855cdb8e49b1ab80e70a8e2001b4",
+    "name": "Gameplay - PulseRelay Canary Fresh",
+    "type": "game",
+    "description": "Gameplay - PulseRelay Canary Fresh screen",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "efaf5277c4034f818440cbc016f5df56",
+    "name": "Game Settings - PulseRelay Canary Fresh",
+    "type": "settings",
+    "description": "Game Settings - PulseRelay Canary Fresh screen",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  }
+]

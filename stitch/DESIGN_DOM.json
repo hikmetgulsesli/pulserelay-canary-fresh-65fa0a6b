@@ -1,0 +1,852 @@
+{
+  "generatedAt": "2026-06-12T05:30:38.767Z",
+  "screenCount": 2,
+  "screens": {
+    "15c7855cdb8e49b1ab80e70a8e2001b4": {
+      "screenId": "15c7855cdb8e49b1ab80e70a8e2001b4",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "header",
+          "layout": "block",
+          "classes": [
+            "bg-surface/80",
+            "backdrop-blur-md",
+            "font-headline-md",
+            "text-headline-md",
+            "tracking-tighter",
+            "w-full",
+            "border-b",
+            "border-outline-variant",
+            "shadow-[0_0_15px_rgba(0,242,255,0.15)]",
+            "transition-all"
+          ],
+          "childCount": 3
+        },
+        {
+          "tag": "nav",
+          "layout": "flex-col",
+          "classes": [
+            "bg-surface-container-lowest/90",
+            "font-code-sm",
+            "text-code-sm",
+            "uppercase",
+            "border-r",
+            "border-outline-variant",
+            "w-64",
+            "flex",
+            "flex-col",
+            "py-md"
+          ],
+          "childCount": 8
+        },
+        {
+          "tag": "main",
+          "layout": "flex-col",
+          "classes": [
+            "flex-1",
+            "flex",
+            "flex-col",
+            "relative",
+            "bg-[#12121a]",
+            "p-lg"
+          ],
+          "childCount": 54
+        },
+        {
+          "tag": "footer",
+          "layout": "flex-row",
+          "classes": [
+            "bg-surface-container-low",
+            "font-code-sm",
+            "text-code-sm",
+            "w-full",
+            "py-base",
+            "border-t",
+            "border-outline-variant",
+            "flex",
+            "justify-between",
+            "items-center"
+          ],
+          "childCount": 2
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "timer",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:text-primary-fixed-dim",
+            "hover:drop-shadow-[0_0_8px_rgba(0,219,231,0.6)]",
+            "active:scale-95",
+            "transition-all"
+          ],
+          "icon": "timer",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "favorite",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:text-primary-fixed-dim",
+            "hover:drop-shadow-[0_0_8px_rgba(0,219,231,0.6)]",
+            "active:scale-95",
+            "transition-all"
+          ],
+          "icon": "favorite",
+          "action": "navigate",
+          "expectedBehavior": "navigate:/favorites",
+          "expectedRoute": "/favorites",
+          "routeInferred": true
+        },
+        {
+          "kind": "button",
+          "label": "rebase_edit",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:text-primary-fixed-dim",
+            "hover:drop-shadow-[0_0_8px_rgba(0,219,231,0.6)]",
+            "active:scale-95",
+            "transition-all"
+          ],
+          "icon": "rebase_edit",
+          "action": "edit",
+          "expectedBehavior": "open edit flow or update selected item/state"
+        },
+        {
+          "kind": "button",
+          "label": "INITIALIZE_PULSE",
+          "classes": [
+            "w-full",
+            "bg-primary-container",
+            "text-on-primary",
+            "py-sm",
+            "font-code-sm",
+            "text-code-sm",
+            "font-bold",
+            "glow-cyan",
+            "hover:glow-cyan-intense",
+            "transition-all",
+            "active:scale-95",
+            "border",
+            "border-primary-container"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "pause",
+          "classes": [
+            "bg-surface-container-high",
+            "border",
+            "border-outline-variant",
+            "text-on-surface",
+            "px-md",
+            "py-sm",
+            "font-code-sm",
+            "flex",
+            "items-center",
+            "gap-xs",
+            "hover:border-primary-container",
+            "hover:text-primary-container",
+            "transition-all"
+          ],
+          "icon": "pause",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "RESTART",
+          "classes": [
+            "bg-surface-container-high",
+            "border",
+            "border-outline-variant",
+            "text-on-surface",
+            "px-md",
+            "py-sm",
+            "font-code-sm",
+            "flex",
+            "items-center",
+            "gap-xs",
+            "hover:border-error",
+            "hover:text-error",
+            "transition-all"
+          ],
+          "icon": "refresh",
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "RESUME_FEED",
+          "classes": [
+            "w-full",
+            "bg-primary-container",
+            "text-on-primary",
+            "py-sm",
+            "font-headline-md",
+            "text-headline-md",
+            "font-bold",
+            "glow-cyan",
+            "hover:glow-cyan-intense",
+            "transition-all",
+            "active:scale-95",
+            "border",
+            "border-primary-container"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "EXIT_TO_SETTINGS",
+          "classes": [
+            "w-full",
+            "bg-transparent",
+            "text-primary-container",
+            "py-sm",
+            "font-headline-md",
+            "text-headline-md",
+            "font-bold",
+            "border",
+            "border-primary-container",
+            "hover:bg-primary-container/10",
+            "transition-all",
+            "active:scale-95"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "OPERATOR_01",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "SYSTEM_STATUS: ACTIVE",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "© 2024 PULSERELAY_SYSTEMS // CANARY_FRESH_BUILD",
+          "classes": [],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [
+        {
+          "kind": "link",
+          "label": "terminal",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "terminal",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "CONFIG",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "settings",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "DATA_STREAMS",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "database",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "DIAGNOSTICS",
+          "href": "#",
+          "classes": [
+            "material-symbols-outlined"
+          ],
+          "icon": "analytics",
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "MANUAL",
+          "href": "#",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:text-primary-container",
+            "underline-offset-4",
+            "hover:underline"
+          ],
+          "icon": null,
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "LOGS",
+          "href": "#",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:text-primary-container",
+            "underline-offset-4",
+            "hover:underline"
+          ],
+          "icon": null,
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "NETWORK_STATUS",
+          "href": "#",
+          "classes": [
+            "text-on-surface-variant",
+            "hover:text-primary-container",
+            "underline-offset-4",
+            "hover:underline"
+          ],
+          "icon": null,
+          "action": "navigate",
+          "expectedBehavior": "navigate:#"
+        }
+      ],
+      "cards": [],
+      "icons": [
+        "timer",
+        "favorite",
+        "rebase_edit",
+        "terminal",
+        "settings",
+        "database",
+        "analytics",
+        "pause",
+        "refresh"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "secondary-fixed-dim": "#fface8",
+        "surface": "#131318",
+        "on-primary-fixed-variant": "#004f54",
+        "tertiary-fixed": "#e9ddff",
+        "on-tertiary-container": "#7318ff",
+        "on-tertiary": "#3c0090",
+        "surface-dim": "#131318",
+        "on-error-container": "#ffdad6",
+        "on-surface": "#e4e1e9",
+        "secondary": "#fface8",
+        "surface-tint": "#00dbe7",
+        "tertiary-container": "#e3d4ff",
+        "on-secondary": "#5e0053",
+        "inverse-on-surface": "#303036",
+        "on-surface-variant": "#b9cacb",
+        "surface-container-low": "#1b1b20",
+        "background": "#131318",
+        "primary-fixed-dim": "#00dbe7",
+        "on-tertiary-fixed-variant": "#5700c9",
+        "primary-container": "#00f2ff",
+        "error-container": "#93000a",
+        "inverse-surface": "#e4e1e9",
+        "outline-variant": "#3a494b",
+        "on-primary-container": "#006a71",
+        "primary-fixed": "#74f5ff",
+        "secondary-container": "#ff24e4",
+        "surface-container-highest": "#35343a",
+        "surface-bright": "#39383e",
+        "primary": "#e1fdff",
+        "surface-container-high": "#2a292f",
+        "on-tertiary-fixed": "#23005b",
+        "tertiary": "#fcf5ff",
+        "on-secondary-fixed": "#3a0033",
+        "on-primary": "#00363a",
+        "surface-container": "#1f1f25",
+        "on-error": "#690005",
+        "on-background": "#e4e1e9",
+        "surface-variant": "#35343a",
+        "outline": "#849495",
+        "on-secondary-fixed-variant": "#840076",
+        "on-secondary-container": "#520049",
+        "error": "#ffb4ab",
+        "tertiary-fixed-dim": "#d1bcff",
+        "inverse-primary": "#00696f",
+        "on-primary-fixed": "#002022",
+        "secondary-fixed": "#ffd7f0",
+        "surface-container-lowest": "#0e0e13"
+      },
+      "fonts": [
+        "JetBrains Mono",
+        "Material Symbols Outlined"
+      ],
+      "layoutHints": {
+        "gridCols": 12,
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "link",
+          "label": "terminal",
+          "icon": "terminal",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "CONFIG",
+          "icon": "settings",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "DATA_STREAMS",
+          "icon": "database",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "DIAGNOSTICS",
+          "icon": "analytics",
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "MANUAL",
+          "icon": null,
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "LOGS",
+          "icon": null,
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "link",
+          "label": "NETWORK_STATUS",
+          "icon": null,
+          "route": "#",
+          "expectedBehavior": "navigate:#"
+        },
+        {
+          "kind": "button",
+          "label": "timer",
+          "icon": "timer",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "favorite",
+          "icon": "favorite",
+          "action": "navigate",
+          "route": "/favorites",
+          "expectedBehavior": "navigate:/favorites"
+        },
+        {
+          "kind": "button",
+          "label": "rebase_edit",
+          "icon": "rebase_edit",
+          "action": "edit",
+          "expectedBehavior": "open edit flow or update selected item/state"
+        },
+        {
+          "kind": "button",
+          "label": "INITIALIZE_PULSE",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "pause",
+          "icon": "pause",
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "RESTART",
+          "icon": "refresh",
+          "action": "reset",
+          "expectedBehavior": "reset visible value/state, with confirmation if destructive"
+        },
+        {
+          "kind": "button",
+          "label": "RESUME_FEED",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "EXIT_TO_SETTINGS",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "OPERATOR_01",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "SYSTEM_STATUS: ACTIVE",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "© 2024 PULSERELAY_SYSTEMS // CANARY_FRESH_BUILD",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "OPERATOR_01",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "SYSTEM_STATUS: ACTIVE",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "terminal",
+          "icon": "terminal",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "CONFIG",
+          "icon": "settings",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "DATA_STREAMS",
+          "icon": "database",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "DIAGNOSTICS",
+          "icon": "analytics",
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "INITIALIZE_PULSE",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "© 2024 PULSERELAY_SYSTEMS // CANARY_FRESH_BUILD",
+          "icon": null,
+          "active": false
+        },
+        {
+          "kind": "link",
+          "label": "MANUAL",
+          "icon": null,
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "LOGS",
+          "icon": null,
+          "route": "#",
+          "active": true
+        },
+        {
+          "kind": "link",
+          "label": "NETWORK_STATUS",
+          "icon": null,
+          "route": "#",
+          "active": true
+        }
+      ],
+      "title": "Gameplay - PulseRelay Canary Fresh"
+    },
+    "efaf5277c4034f818440cbc016f5df56": {
+      "screenId": "efaf5277c4034f818440cbc016f5df56",
+      "materialSymbolsRequired": true,
+      "sections": [
+        {
+          "tag": "main",
+          "layout": "relative",
+          "classes": [
+            "w-full",
+            "max-w-2xl",
+            "bg-surface/95",
+            "border",
+            "border-outline-variant",
+            "rounded",
+            "z-10",
+            "backdrop-blur-md",
+            "shadow-2xl",
+            "relative"
+          ],
+          "childCount": 32
+        }
+      ],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "BACK TO GAME",
+          "classes": [
+            "px-lg",
+            "py-sm",
+            "font-label-md",
+            "text-label-md",
+            "uppercase",
+            "tracking-wider",
+            "border",
+            "border-outline-variant",
+            "text-on-surface-variant",
+            "hover:border-primary-container",
+            "hover:text-primary-container",
+            "transition-all",
+            "duration-200",
+            "focus:outline-none",
+            "focus:ring-1",
+            "focus:ring-primary-container"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "SAVE CONFIGURATION",
+          "classes": [
+            "px-lg",
+            "py-sm",
+            "font-label-md",
+            "text-label-md",
+            "uppercase",
+            "tracking-wider",
+            "bg-primary-container",
+            "text-on-primary",
+            "border",
+            "border-primary-container",
+            "hover:bg-primary-fixed",
+            "hover:glow-active",
+            "transition-all",
+            "duration-200",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-primary-fixed-dim",
+            "focus:ring-offset-2",
+            "focus:ring-offset-surface"
+          ],
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        }
+      ],
+      "inputs": [
+        {
+          "kind": "input",
+          "type": "radio",
+          "label": "difficulty",
+          "placeholder": "",
+          "name": "difficulty",
+          "classes": [
+            "hidden",
+            "peer"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "type": "checkbox",
+          "label": "toggle",
+          "placeholder": "",
+          "name": "toggle",
+          "classes": [
+            "toggle-checkbox",
+            "absolute",
+            "block",
+            "w-5",
+            "h-5",
+            "rounded-full",
+            "bg-surface",
+            "border",
+            "border-outline-variant",
+            "appearance-none",
+            "cursor-pointer",
+            "z-10",
+            "top-0",
+            "left-0",
+            "transition-transform",
+            "duration-200",
+            "ease-in-out"
+          ],
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "navLinks": [],
+      "cards": [],
+      "icons": [
+        "settings",
+        "speed",
+        "tune",
+        "menu_book",
+        "info"
+      ],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {
+        "secondary-fixed-dim": "#fface8",
+        "surface": "#131318",
+        "on-primary-fixed-variant": "#004f54",
+        "tertiary-fixed": "#e9ddff",
+        "on-tertiary-container": "#7318ff",
+        "on-tertiary": "#3c0090",
+        "surface-dim": "#131318",
+        "on-error-container": "#ffdad6",
+        "on-surface": "#e4e1e9",
+        "secondary": "#fface8",
+        "surface-tint": "#00dbe7",
+        "tertiary-container": "#e3d4ff",
+        "on-secondary": "#5e0053",
+        "inverse-on-surface": "#303036",
+        "on-surface-variant": "#b9cacb",
+        "surface-container-low": "#1b1b20",
+        "background": "#131318",
+        "primary-fixed-dim": "#00dbe7",
+        "on-tertiary-fixed-variant": "#5700c9",
+        "primary-container": "#00f2ff",
+        "error-container": "#93000a",
+        "inverse-surface": "#e4e1e9",
+        "outline-variant": "#3a494b",
+        "on-primary-container": "#006a71",
+        "primary-fixed": "#74f5ff",
+        "secondary-container": "#ff24e4",
+        "surface-container-highest": "#35343a",
+        "surface-bright": "#39383e",
+        "primary": "#e1fdff",
+        "surface-container-high": "#2a292f",
+        "on-tertiary-fixed": "#23005b",
+        "tertiary": "#fcf5ff",
+        "on-secondary-fixed": "#3a0033",
+        "on-primary": "#00363a",
+        "surface-container": "#1f1f25",
+        "on-error": "#690005",
+        "on-background": "#e4e1e9",
+        "surface-variant": "#35343a",
+        "outline": "#849495",
+        "on-secondary-fixed-variant": "#840076",
+        "on-secondary-container": "#520049",
+        "error": "#ffb4ab",
+        "tertiary-fixed-dim": "#d1bcff",
+        "inverse-primary": "#00696f",
+        "on-primary-fixed": "#002022",
+        "secondary-fixed": "#ffd7f0",
+        "surface-container-lowest": "#0e0e13"
+      },
+      "fonts": [
+        "Material Symbols Outlined",
+        "JetBrains Mono"
+      ],
+      "layoutHints": {
+        "gridCols": 1,
+        "flexDirection": "col"
+      },
+      "behaviorContract": [
+        {
+          "kind": "button",
+          "label": "BACK TO GAME",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        },
+        {
+          "kind": "button",
+          "label": "SAVE CONFIGURATION",
+          "icon": null,
+          "action": "form-submit",
+          "expectedBehavior": "validate inputs and submit/apply changes"
+        },
+        {
+          "kind": "input",
+          "label": "difficulty",
+          "type": "radio",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        },
+        {
+          "kind": "input",
+          "label": "toggle",
+          "type": "checkbox",
+          "placeholder": "",
+          "expectedBehavior": "controlled value with onChange; validation if required by PRD"
+        }
+      ],
+      "tabBar": [
+        {
+          "kind": "button",
+          "label": "BACK TO GAME",
+          "icon": null,
+          "active": true
+        },
+        {
+          "kind": "button",
+          "label": "SAVE CONFIGURATION",
+          "icon": null,
+          "active": true
+        }
+      ],
+      "title": "Game Settings - PulseRelay Canary Fresh"
+    }
+  }
+}

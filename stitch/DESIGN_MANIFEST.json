@@ -1,0 +1,24 @@
+[
+  {
+    "screenId": "15c7855cdb8e49b1ab80e70a8e2001b4",
+    "title": "Gameplay - PulseRelay Canary Fresh",
+    "htmlFile": "15c7855cdb8e49b1ab80e70a8e2001b4.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ6Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpZCiVodG1sXzg0OWYxZjhkMTEwNDQ1OGFhMzdjNmIyNmU4MTE1NWQ4EgsSBxCN19Wi9xcYAZIBIgoKcHJvamVjdF9pZBIUQhI1MDM5MDQ4MzkyNTY4OTUxODY&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/pulserelay-canary-fresh-65fa0a6b/stitch/15c7855cdb8e49b1ab80e70a8e2001b4.html",
+    "surfaceIds": [
+      "SURF_GAMEPLAY"
+    ]
+  },
+  {
+    "screenId": "efaf5277c4034f818440cbc016f5df56",
+    "title": "Game Settings - PulseRelay Canary Fresh",
+    "htmlFile": "efaf5277c4034f818440cbc016f5df56.html",
+    "deviceType": "DESKTOP",
+    "htmlUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ6Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpZCiVodG1sXzMyYTQwYzNlNzQyNjQwMmJhYmUxNDc3ZmQ2NmRiYTBiEgsSBxCN19Wi9xcYAZIBIgoKcHJvamVjdF9pZBIUQhI1MDM5MDQ4MzkyNTY4OTUxODY&filename=&opi=96797242",
+    "localHtml": "/Users/setrox/projects/pulserelay-canary-fresh-65fa0a6b/stitch/efaf5277c4034f818440cbc016f5df56.html",
+    "surfaceIds": [
+      "SURF_GAME_SETTINGS"
+    ]
+  }
+]

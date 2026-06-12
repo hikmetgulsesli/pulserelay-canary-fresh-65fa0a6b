@@ -20,7 +20,10 @@ export const pulseRepo = {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return { ...defaultGameConfig };
-      const parsed = JSON.parse(raw) as Partial<GameConfig>;
+      const parsed = JSON.parse(raw) as Partial<GameConfig> | null;
+      if (!parsed || typeof parsed !== 'object') {
+        return { ...defaultGameConfig };
+      }
       return {
         highScore: typeof parsed.highScore === 'number' ? parsed.highScore : defaultGameConfig.highScore,
         sfx: typeof parsed.sfx === 'boolean' ? parsed.sfx : defaultGameConfig.sfx,

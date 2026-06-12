@@ -13,11 +13,20 @@ export type RuntimeApi = {
 
 let activeTimer: ReturnType<typeof setInterval> | null = null;
 
+const MAX_LANES = 3;
+
+function randomLane(): number {
+  return Math.floor(Math.random() * MAX_LANES);
+}
+
 export function startGameRuntime(store: PulseStore, tickMs = 250): () => void {
   stopGameRuntime();
 
   activeTimer = setInterval(() => {
-    store.dispatch({ type: 'tick' });
+    store.dispatch({
+      type: 'tick',
+      payload: { obstacleLane: randomLane(), shardLane: randomLane() },
+    });
   }, tickMs);
 
   const api: RuntimeApi = {

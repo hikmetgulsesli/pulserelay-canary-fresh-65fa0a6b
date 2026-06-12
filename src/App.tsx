@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useSyncExternalStore } from 'react';
-import { createPulseRelayStore, type PulseState } from './features/pulserelay-canary-fresh/pulserelay-canary-fresh.store';
+import {
+  createPulseRelayStore,
+  initialPulseState,
+  type PulseState,
+} from './features/pulserelay-canary-fresh/pulserelay-canary-fresh.store';
+import { pulseRepo } from './features/pulserelay-canary-fresh/pulserelay-canary-fresh.repo';
 import { startGameRuntime, stopGameRuntime } from './game/game-runtime';
 import {
   GameplayPulserelayCanaryFresh,
@@ -11,7 +16,10 @@ import type {
 } from './screens';
 
 export default function App() {
-  const store = useMemo(() => createPulseRelayStore(), []);
+  const store = useMemo(
+    () => createPulseRelayStore({ ...initialPulseState, config: pulseRepo.load() }),
+    [],
+  );
   const state = useSyncExternalStore(store.subscribe, store.getState, store.getState);
 
   useEffect(() => {
@@ -21,6 +29,41 @@ export default function App() {
       stopGameRuntime();
     };
   }, [store]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (state.screen !== 'gameplay') return;
+      switch (e.key.toLowerCase()) {
+        case 'arrowleft':
+        case 'a':
+          store.dispatch({ type: 'move-left' });
+          break;
+        case 'arrowright':
+        case 'd':
+          store.dispatch({ type: 'move-right' });
+          break;
+        case ' ':
+          if (!state.initialized) {
+            store.dispatch({ type: 'initialize-pulse' });
+          } else if (state.paused) {
+            store.dispatch({ type: 'resume-feed' });
+          } else {
+            store.dispatch({ type: 'pause' });
+          }
+          break;
+        case 'r':
+          store.dispatch({ type: 'restart' });
+          break;
+        case 'p':
+          if (state.initialized && !state.paused) {
+            store.dispatch({ type: 'pause' });
+          }
+          break;
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [store, state.screen, state.initialized, state.paused]);
 
   const gameplayActions = useMemo(
     (): Partial<Record<GameplayPulserelayCanaryFreshActionId, () => void>> => ({

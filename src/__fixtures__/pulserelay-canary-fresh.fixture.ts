@@ -10,6 +10,7 @@ export const pulseFixture = {
     energy: 100,
     lives: 3,
     log: ['PULSE INITIALIZED'],
+    config: { ...initialPulseState.config },
   }),
 
   running: (): PulseState => ({
@@ -24,6 +25,7 @@ export const pulseFixture = {
     obstacles: [{ lane: 0, position: 5 }],
     shards: [{ lane: 2, position: 8 }],
     log: ['PULSE INITIALIZED', 'TIMER SYNC'],
+    config: { ...initialPulseState.config },
   }),
 
   paused: (): PulseState => ({
@@ -34,5 +36,6 @@ export const pulseFixture = {
     energy: 60,
     lives: 1,
     log: ['PULSE INITIALIZED', 'PAUSED'],
+    config: { ...initialPulseState.config },
   }),
 };

@@ -1,3 +1,5 @@
+import { defaultGameConfig, pulseRepo, type GameConfig } from './pulserelay-canary-fresh.repo';
+
 export type GameScreen = 'gameplay' | 'settings';
 
 export type GameEntity = {
@@ -17,6 +19,7 @@ export type PulseState = {
   lives: number;
   ticks: number;
   log: string[];
+  config: GameConfig;
 };
 
 export const initialPulseState: PulseState = {
@@ -31,6 +34,7 @@ export const initialPulseState: PulseState = {
   lives: 3,
   ticks: 0,
   log: [],
+  config: { ...defaultGameConfig },
 };
 
 const MAX_LANES = 3;
@@ -40,13 +44,9 @@ function clampLane(lane: number): number {
   return Math.max(0, Math.min(MAX_LANES - 1, lane));
 }
 
-function randomLane(): number {
-  return Math.floor(Math.random() * MAX_LANES);
-}
-
 export type PulseAction =
   | { type: 'initialize-pulse' }
-  | { type: 'tick' }
+  | { type: 'tick'; payload: { obstacleLane: number; shardLane: number } }
   | { type: 'pause' }
   | { type: 'resume-feed' }
   | { type: 'restart' }
@@ -64,14 +64,19 @@ export type PulseAction =
   | { type: 'logs-6' }
   | { type: 'network-status-7' }
   | { type: 'move-left' }
-  | { type: 'move-right' };
+  | { type: 'move-right' }
+  | { type: 'load-config'; payload: GameConfig };
 
 export function pulseReducer(state: PulseState, action: PulseAction): PulseState {
   switch (action.type) {
+    case 'load-config':
+      return { ...state, config: { ...action.payload } };
+
     case 'initialize-pulse':
       return {
         ...initialPulseState,
         screen: state.screen,
+        config: state.config,
         initialized: true,
         paused: false,
         log: [...state.log, 'PULSE INITIALIZED'],
@@ -81,6 +86,7 @@ export function pulseReducer(state: PulseState, action: PulseAction): PulseState
       return {
         ...initialPulseState,
         screen: state.screen,
+        config: state.config,
         log: [...state.log, 'SYSTEM RESTART'],
       };
 
@@ -100,28 +106,29 @@ export function pulseReducer(state: PulseState, action: PulseAction): PulseState
       return { ...state, screen: 'gameplay', log: [...state.log, 'CONFIGURATION SAVED'] };
 
     case 'tick': {
-      if (!state.initialized || state.paused) {
+      if (!state.initialized || state.paused || state.lives <= 0) {
         return state;
       }
 
       const ticks = state.ticks + 1;
       let obstacles = state.obstacles
-        .map((o) => ({ ...o, position: o.position + 1 }))
-        .filter((o) => o.position < TRACK_LENGTH);
+        .map((o) => ({ ...o, position: o.position - 1 }))
+        .filter((o) => o.position >= 0);
       let shards = state.shards
-        .map((s) => ({ ...s, position: s.position + 1 }))
-        .filter((s) => s.position < TRACK_LENGTH);
+        .map((s) => ({ ...s, position: s.position - 1 }))
+        .filter((s) => s.position >= 0);
 
       if (ticks % 8 === 0) {
-        obstacles = [...obstacles, { lane: randomLane(), position: 0 }];
+        obstacles = [...obstacles, { lane: action.payload.obstacleLane, position: TRACK_LENGTH - 1 }];
       }
       if (ticks % 12 === 0) {
-        shards = [...shards, { lane: randomLane(), position: 0 }];
+        shards = [...shards, { lane: action.payload.shardLane, position: TRACK_LENGTH - 1 }];
       }
 
       let lives = state.lives;
       let energy = Math.min(100, state.energy + 1);
       let score = state.score + 1;
+      const log = [...state.log];
 
       const hitObstacle = obstacles.some(
         (o) => o.lane === state.player.lane && o.position === state.player.position,
@@ -129,6 +136,9 @@ export function pulseReducer(state: PulseState, action: PulseAction): PulseState
       if (hitObstacle) {
         lives = Math.max(0, lives - 1);
         energy = Math.max(0, energy - 20);
+        if (lives === 0) {
+          log.push('GAME OVER');
+        }
       }
 
       const collectedShard = shards.some(
@@ -150,6 +160,7 @@ export function pulseReducer(state: PulseState, action: PulseAction): PulseState
         score,
         energy,
         lives,
+        log,
       };
     }
 
@@ -207,12 +218,26 @@ export type PulseStore = {
   actions: Record<PulseAction['type'], () => void>;
 };
 
+function randomLane(): number {
+  return Math.floor(Math.random() * MAX_LANES);
+}
+
 export function createPulseRelayStore(seed: PulseState = initialPulseState): PulseStore {
-  let state = seed;
+  let state = { ...seed, config: seed.config ?? { ...defaultGameConfig } };
   const listeners = new Set<() => void>();
 
   const dispatch = (action: PulseAction) => {
     state = pulseReducer(state, action);
+
+    if (action.type === 'save-configuration-2') {
+      pulseRepo.save(state.config);
+    }
+
+    if (state.score > state.config.highScore) {
+      const nextConfig = pulseRepo.updateHighScore(state.score);
+      state = { ...state, config: nextConfig };
+    }
+
     listeners.forEach((listener) => listener());
   };
 
@@ -246,10 +271,23 @@ export function createPulseRelayStore(seed: PulseState = initialPulseState): Pul
     'network-status-7',
     'move-left',
     'move-right',
+    'load-config',
   ];
 
   const actions = Object.fromEntries(
-    actionTypes.map((type) => [type, () => dispatch({ type } as PulseAction)]),
+    actionTypes.map((type) => [
+      type,
+      () => {
+        if (type === 'tick') {
+          dispatch({
+            type: 'tick',
+            payload: { obstacleLane: randomLane(), shardLane: randomLane() },
+          });
+          return;
+        }
+        dispatch({ type } as PulseAction);
+      },
+    ]),
   ) as Record<PulseAction['type'], () => void>;
 
   return { getState, dispatch, subscribe, actions };
